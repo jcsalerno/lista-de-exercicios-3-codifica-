@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Listas e Navegação</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header class="header-with-menu">
+        <div class="header-content">
+            <h1>Listas e Navegação</h1>
+            
+            <!-- Navegação padrão (desktop) -->
+            <nav class="desktop-nav">
+                <ul>
+                    <li><a href="index.html">Início</a></li>
+                    <li><a href="listas.html">Listas</a></li>
+                    <li><a href="feedback.html">Feedback</a></li>
+                    <li><a href="galeria.html">Galeria</a></li>
+                    <li><a href="menu.html">Menu</a></li>
+                </ul>
+            </nav>
+            
+            <!-- Botão hamburger (mobile) -->
+            <button class="hamburger-btn" id="hamburgerBtn" aria-label="Menu">
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+            </button>
+        </div>
+        
+        <!-- Menu mobile -->
+        <nav class="mobile-nav" id="mobileNav">
+            <ul>
+                <li><a href="index.html">Início</a></li>
+                <li><a href="listas.html">Listas</a></li>
+                <li><a href="feedback.html">Feedback</a></li>
+                <li><a href="galeria.html">Galeria</a></li>
+                <li><a href="menu.html">Menu</a></li>
+            </ul>
+        </nav>
+        
+        <div class="header-intro">
+            <p>Esta página demonstra o uso de listas ordenadas, não ordenadas e elementos de navegação.</p>
+        </div>
+    </header>
+
+    <main>
+        <section>
+            <h2>Meus Hobbies</h2>
+            <ul>
+                <li>Programação e desenvolvimento web</li>
+                <li>Leitura de livros de ficção científica</li>
+                <li>Fotografia de paisagens</li>
+                <li>Culinária internacional</li>
+                <li>Caminhadas em trilhas naturais</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Receita: Pão de Açúcar Simples</h2>
+            <ol>
+                <li>Pré-aqueça o forno a 180°C</li>
+                <li>Em uma tigela, misture 2 xícaras de farinha de trigo com 1 xícara de açúcar</li>
+                <li>Adicione 1/2 xícara de manteiga derretida e misture bem</li>
+                <li>Acrescente 2 ovos batidos e 1/2 xícara de leite</li>
+                <li>Misture todos os ingredientes até formar uma massa homogênea</li>
+                <li>Despeje a massa em uma forma untada</li>
+                <li>Asse por 25-30 minutos ou até dourar</li>
+                <li>Deixe esfriar antes de desenformar e servir</li>
+            </ol>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Listas e Navegação. Todos os direitos reservados.</p>
+    </footer>
+
+    <script>
+        // JavaScript para controlar o menu hamburger
+        document.addEventListener('DOMContentLoaded', function() {
+            const hamburgerBtn = document.getElementById('hamburgerBtn');
+            const mobileNav = document.getElementById('mobileNav');
+            
+            if (hamburgerBtn && mobileNav) {
+                hamburgerBtn.addEventListener('click', function() {
+                    // Toggle da classe 'active' no botão e no menu
+                    hamburgerBtn.classList.toggle('active');
+                    mobileNav.classList.toggle('active');
+                    
+                    // Atualizar aria-expanded para acessibilidade
+                    const isExpanded = mobileNav.classList.contains('active');
+                    hamburgerBtn.setAttribute('aria-expanded', isExpanded);
+                });
+                
+                // Fechar menu ao clicar em um link
+                const mobileLinks = mobileNav.querySelectorAll('a');
+                mobileLinks.forEach(link => {
+                    link.addEventListener('click', function() {
+                        hamburgerBtn.classList.remove('active');
+                        mobileNav.classList.remove('active');
+                        hamburgerBtn.setAttribute('aria-expanded', 'false');
+                    });
+                });
+                
+                // Fechar menu ao pressionar Escape
+                document.addEventListener('keydown', function(e) {
+                    if (e.key === 'Escape' && mobileNav.classList.contains('active')) {
+                        hamburgerBtn.classList.remove('active');
+                        mobileNav.classList.remove('active');
+                        hamburgerBtn.setAttribute('aria-expanded', 'false');
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+</html>
+

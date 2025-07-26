@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minha Página Pessoal</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header class="header-with-menu">
+        <div class="header-content">
+            <h1>Bem-vindo ao Meu Site</h1>
+            
+            <!-- Navegação padrão (desktop) -->
+            <nav class="desktop-nav">
+                <ul>
+                    <li><a href="index.html">Início</a></li>
+                    <li><a href="listas.html">Listas</a></li>
+                    <li><a href="feedback.html">Feedback</a></li>
+                    <li><a href="galeria.html">Galeria</a></li>
+                    <li><a href="menu.html">Menu</a></li>
+                </ul>
+            </nav>
+            
+            <!-- Botão hamburger (mobile) -->
+            <button class="hamburger-btn" id="hamburgerBtn" aria-label="Menu">
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+            </button>
+        </div>
+        
+        <!-- Menu mobile -->
+        <nav class="mobile-nav" id="mobileNav">
+            <ul>
+                <li><a href="index.html">Início</a></li>
+                <li><a href="listas.html">Listas</a></li>
+                <li><a href="feedback.html">Feedback</a></li>
+                <li><a href="galeria.html">Galeria</a></li>
+                <li><a href="menu.html">Menu</a></li>
+            </ul>
+        </nav>
+        
+        <div class="header-intro">
+            <p>Este é um site criado para demonstrar o uso de tags semânticas HTML e técnicas modernas de CSS. Aqui você encontrará informações sobre nossa missão e visão.</p>
+        </div>
+    </header>
+
+    <main>
+        <section class="missao">
+            <h2>Missão</h2>
+            <p>Nossa missão é criar experiências web excepcionais que conectem pessoas e facilitem o acesso à informação. Acreditamos no poder da tecnologia para transformar ideias em realidade e proporcionar soluções inovadoras que fazem a diferença na vida das pessoas.</p>
+        </section>
+
+        <section class="visao">
+            <h2>Visão</h2>
+            <p>Nossa visão é ser reconhecidos como referência em desenvolvimento web, criando interfaces intuitivas e acessíveis que inspirem e capacitem usuários ao redor do mundo. Buscamos constantemente a excelência técnica e a inovação em cada projeto que desenvolvemos.</p>
+            <p class="destaque">Este parágrafo demonstra o uso da classe .destaque com texto em itálico e fundo destacado.</p>
+            <p id="importante">Este parágrafo possui o ID #importante e demonstra o uso de uma borda superior mais espessa.</p>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Minha Página Pessoal. Todos os direitos reservados.</p>
+    </footer>
+
+    <script>
+        // JavaScript para controlar o menu hamburger
+        document.addEventListener('DOMContentLoaded', function() {
+            const hamburgerBtn = document.getElementById('hamburgerBtn');
+            const mobileNav = document.getElementById('mobileNav');
+            
+            if (hamburgerBtn && mobileNav) {
+                hamburgerBtn.addEventListener('click', function() {
+                    // Toggle da classe 'active' no botão e no menu
+                    hamburgerBtn.classList.toggle('active');
+                    mobileNav.classList.toggle('active');
+                    
+                    // Atualizar aria-expanded para acessibilidade
+                    const isExpanded = mobileNav.classList.contains('active');
+                    hamburgerBtn.setAttribute('aria-expanded', isExpanded);
+                });
+                
+                // Fechar menu ao clicar em um link
+                const mobileLinks = mobileNav.querySelectorAll('a');
+                mobileLinks.forEach(link => {
+                    link.addEventListener('click', function() {
+                        hamburgerBtn.classList.remove('active');
+                        mobileNav.classList.remove('active');
+                        hamburgerBtn.setAttribute('aria-expanded', 'false');
+                    });
+                });
+                
+                // Fechar menu ao pressionar Escape
+                document.addEventListener('keydown', function(e) {
+                    if (e.key === 'Escape' && mobileNav.classList.contains('active')) {
+                        hamburgerBtn.classList.remove('active');
+                        mobileNav.classList.remove('active');
+                        hamburgerBtn.setAttribute('aria-expanded', 'false');
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+</html>
+

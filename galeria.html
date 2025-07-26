@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Galeria de Imagens</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header class="header-with-menu">
+        <div class="header-content">
+            <h1>Galeria de Imagens</h1>
+          
+            <nav class="desktop-nav">
+                <ul>
+                    <li><a href="index.html">Início</a></li>
+                    <li><a href="listas.html">Listas</a></li>
+                    <li><a href="feedback.html">Feedback</a></li>
+                    <li><a href="galeria.html">Galeria</a></li>
+                    <li><a href="menu.html">Menu</a></li>
+                </ul>
+            </nav>
+            
+            <button class="hamburger-btn" id="hamburgerBtn" aria-label="Menu">
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+            </button>
+        </div>
+
+        <nav class="mobile-nav" id="mobileNav">
+            <ul>
+                <li><a href="index.html">Início</a></li>
+                <li><a href="listas.html">Listas</a></li>
+                <li><a href="feedback.html">Feedback</a></li>
+                <li><a href="galeria.html">Galeria</a></li>
+                <li><a href="menu.html">Menu</a></li>
+            </ul>
+        </nav>
+        
+        <div class="header-intro">
+            <p>Uma coleção de belas imagens organizadas com CSS Grid e Flexbox para demonstrar técnicas modernas de layout responsivo.</p>
+        </div>
+    </header>
+
+    <main class="gallery-container">
+        <div class="gallery-grid">
+            <figure class="gallery-item">
+                <img src="img1.png" alt="Paisagem montanhosa com picos nevados">
+                <figcaption>Majestosas montanhas cobertas de neve</figcaption>
+            </figure>
+
+            <figure class="gallery-item">
+                <img src="img2.png" alt="Pôr do sol tropical com palmeiras">
+                <figcaption>Pôr do sol dourado no paraíso tropical</figcaption>
+            </figure>
+
+            <figure class="gallery-item">
+                <img src="img3.png" alt="Floresta misteriosa com raios de sol">
+                <figcaption>Floresta encantada com luz filtrada</figcaption>
+            </figure>
+
+            <figure class="gallery-item">
+                <img src="img4.png" alt="Skyline urbano noturno">
+                <figcaption>Luzes da cidade refletindo na água</figcaption>
+            </figure>
+
+            <figure class="gallery-item">
+                <img src="img5.png" alt="Jardim colorido com flores e borboletas">
+                <figcaption>Jardim vibrante na primavera</figcaption>
+            </figure>
+
+            <figure class="gallery-item">
+                <img src="img6.png" alt="Deserto com céu estrelado">
+                <figcaption>Via Láctea sobre dunas do deserto</figcaption>
+            </figure>
+
+            <figure class="gallery-item">
+                <img src="img7.png" alt="Interior aconchegante de cafeteria">
+                <figcaption>Cafeteria acolhedora com livros</figcaption>
+            </figure>
+
+            <figure class="gallery-item">
+                <img src="img8.png" alt="Biblioteca vintage com livros antigos">
+                <figcaption>Biblioteca clássica com atmosfera acadêmica</figcaption>
+            </figure>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Galeria de Imagens. Todos os direitos reservados.</p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const hamburgerBtn = document.getElementById('hamburgerBtn');
+            const mobileNav = document.getElementById('mobileNav');
+            
+            if (hamburgerBtn && mobileNav) {
+                hamburgerBtn.addEventListener('click', function() {
+                    
+                    hamburgerBtn.classList.toggle('active');
+                    mobileNav.classList.toggle('active');
+                    
+                    const isExpanded = mobileNav.classList.contains('active');
+                    hamburgerBtn.setAttribute('aria-expanded', isExpanded);
+                });
+                
+                const mobileLinks = mobileNav.querySelectorAll('a');
+                mobileLinks.forEach(link => {
+                    link.addEventListener('click', function() {
+                        hamburgerBtn.classList.remove('active');
+                        mobileNav.classList.remove('active');
+                        hamburgerBtn.setAttribute('aria-expanded', 'false');
+                    });
+                });
+                
+                document.addEventListener('keydown', function(e) {
+                    if (e.key === 'Escape' && mobileNav.classList.contains('active')) {
+                        hamburgerBtn.classList.remove('active');
+                        mobileNav.classList.remove('active');
+                        hamburgerBtn.setAttribute('aria-expanded', 'false');
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+</html>
+

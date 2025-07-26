@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu Hamburger Responsivo</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header class="header-with-menu">
+        <div class="header-content">
+            <h1>Site com Menu Responsivo</h1>
+            
+            <!-- Navegação padrão (desktop) -->
+            <nav class="desktop-nav">
+                <ul>
+                    <li><a href="index.html">Início</a></li>
+                    <li><a href="listas.html">Listas</a></li>
+                    <li><a href="feedback.html">Feedback</a></li>
+                    <li><a href="galeria.html">Galeria</a></li>
+                    <li><a href="menu.html">Menu</a></li>
+                </ul>
+            </nav>
+            
+            <!-- Botão hamburger (mobile) -->
+            <button class="hamburger-btn" id="hamburgerBtn" aria-label="Menu">
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+            </button>
+        </div>
+        
+        <!-- Menu mobile -->
+        <nav class="mobile-nav" id="mobileNav">
+            <ul>
+                <li><a href="index.html">Início</a></li>
+                <li><a href="listas.html">Listas</a></li>
+                <li><a href="feedback.html">Feedback</a></li>
+                <li><a href="galeria.html">Galeria</a></li>
+                <li><a href="menu.html">Menu</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section>
+            <h2>Menu Hamburger Responsivo</h2>
+            <p>Esta página demonstra a implementação de um menu hamburger que aparece apenas em telas com largura menor ou igual a 600px. O menu se abre e fecha ao clicar no ícone hamburger.</p>
+            
+            <div class="destaque">
+                <p>Para testar o menu hamburger, redimensione a janela do navegador para uma largura menor que 600px ou acesse em um dispositivo móvel.</p>
+            </div>
+            
+            <h3>Funcionalidades do Menu:</h3>
+            <ul>
+                <li>Aparece apenas em telas ≤ 600px</li>
+                <li>Oculta a navegação padrão em dispositivos móveis</li>
+                <li>Abre e fecha com animação suave</li>
+                <li>Ícone hamburger animado</li>
+                <li>Acessível via teclado</li>
+            </ul>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Menu Hamburger Responsivo. Todos os direitos reservados.</p>
+    </footer>
+
+    <script>
+        // JavaScript para controlar o menu hamburger
+        document.addEventListener('DOMContentLoaded', function() {
+            const hamburgerBtn = document.getElementById('hamburgerBtn');
+            const mobileNav = document.getElementById('mobileNav');
+            
+            hamburgerBtn.addEventListener('click', function() {
+                // Toggle da classe 'active' no botão e no menu
+                hamburgerBtn.classList.toggle('active');
+                mobileNav.classList.toggle('active');
+                
+                // Atualizar aria-expanded para acessibilidade
+                const isExpanded = mobileNav.classList.contains('active');
+                hamburgerBtn.setAttribute('aria-expanded', isExpanded);
+            });
+            
+            // Fechar menu ao clicar em um link
+            const mobileLinks = mobileNav.querySelectorAll('a');
+            mobileLinks.forEach(link => {
+                link.addEventListener('click', function() {
+                    hamburgerBtn.classList.remove('active');
+                    mobileNav.classList.remove('active');
+                    hamburgerBtn.setAttribute('aria-expanded', 'false');
+                });
+            });
+            
+            // Fechar menu ao pressionar Escape
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape' && mobileNav.classList.contains('active')) {
+                    hamburgerBtn.classList.remove('active');
+                    mobileNav.classList.remove('active');
+                    hamburgerBtn.setAttribute('aria-expanded', 'false');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
+
