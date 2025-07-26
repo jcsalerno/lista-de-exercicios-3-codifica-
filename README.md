@@ -74,4 +74,4 @@ O projeto é composto pelos seguintes arquivos e funcionalidades:
 - **CSS3**: Para estilização, layout (Flexbox e Grid) e responsividade.
 - **JavaScript**: Para a interatividade do menu hamburger.
 
-# lista-de-exercicios-3-codifica-
+
